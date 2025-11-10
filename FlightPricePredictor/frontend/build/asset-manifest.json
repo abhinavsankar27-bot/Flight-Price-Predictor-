@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/FlightPricePredictor/static/css/main.347ef8ce.css",
+    "main.js": "/FlightPricePredictor/static/js/main.3b090ccf.js",
+    "index.html": "/FlightPricePredictor/index.html",
+    "main.347ef8ce.css.map": "/FlightPricePredictor/static/css/main.347ef8ce.css.map",
+    "main.3b090ccf.js.map": "/FlightPricePredictor/static/js/main.3b090ccf.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.347ef8ce.css",
+    "static/js/main.3b090ccf.js"
+  ]
+}

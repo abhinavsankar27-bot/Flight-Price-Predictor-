@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* small helpers */
+.input {
+  @apply border p-2 w-full rounded mb-3 shadow-sm bg-white/90 dark:bg-gray-800/60;
+}
+.btn {
+  @apply bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded;
+}
+.card {
+  @apply bg-white/90 dark:bg-gray-800/75 border border-gray-200 dark:border-gray-700 rounded-xl p-6 shadow;
+}
+.loading {
+  @apply inline-block w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin;
+}
+
+/* Responsive layout tweaks */
+@media (min-width: 1024px) {
+  .two-col {
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    gap: 28px;
+    align-items: start;
+  }
+}
