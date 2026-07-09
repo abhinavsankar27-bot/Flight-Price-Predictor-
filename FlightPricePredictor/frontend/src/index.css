@@ -1,27 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* small helpers */
-.input {
-  @apply border p-2 w-full rounded mb-3 shadow-sm bg-white/90 dark:bg-gray-800/60;
-}
-.btn {
-  @apply bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded;
-}
-.card {
-  @apply bg-white/90 dark:bg-gray-800/75 border border-gray-200 dark:border-gray-700 rounded-xl p-6 shadow;
-}
-.loading {
-  @apply inline-block w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin;
+@layer base {
+  :root {
+    --bg-color: #F8FAFC;
+    --card-color: #FFFFFF;
+    --card-secondary: #F1F5F9;
+    --primary: #3B82F6;
+    --accent: #8B5CF6;
+    --success: #22C55E;
+    --warning: #F59E0B;
+    --error: #EF4444;
+    --text-main: #0F172A;
+    --text-secondary: #64748B;
+  }
+
+  .dark {
+    --bg-color: #0B1220;
+    --card-color: #111827;
+    --card-secondary: #1F2937;
+    --text-main: #FFFFFF;
+    --text-secondary: #94A3B8;
+  }
+
+  body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
 }
 
-/* Responsive layout tweaks */
-@media (min-width: 1024px) {
-  .two-col {
-    display: grid;
-    grid-template-columns: 420px 1fr;
-    gap: 28px;
-    align-items: start;
+@layer components {
+  .glass-card {
+    @apply bg-[var(--card-color)] border border-white/10 shadow-[0_8px_30px_rgb(0,0,0,0.12)] backdrop-blur-md rounded-[24px] p-6;
   }
+  
+  .glass-card-secondary {
+    @apply bg-[var(--card-secondary)] border border-white/5 shadow-inner rounded-xl p-4;
+  }
+
+  .btn-primary {
+    @apply bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:shadow-[0_0_25px_rgba(139,92,246,0.7)] hover:-translate-y-1 relative overflow-hidden;
+  }
+  
+  .input-modern {
+    @apply w-full bg-[var(--card-secondary)] border border-gray-700/50 text-[var(--text-main)] rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 placeholder:text-gray-500;
+  }
+  
+  .badge {
+    @apply inline-flex items-center rounded-md px-2.5 py-0.5 text-xs font-semibold;
+  }
+  .badge-success {
+    @apply bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400;
+  }
+  .badge-warning {
+    @apply bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400;
+  }
+  .badge-error {
+    @apply bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400;
+  }
+  .badge-info {
+    @apply bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400;
+  }
+}
+
+/* Animations */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: .8; transform: scale(1.05); }
+}
+
+.magic-sparkle {
+  animation: pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }

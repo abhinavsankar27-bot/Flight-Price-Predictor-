@@ -1,0 +1,14 @@
+fastapi
+uvicorn
+pydantic
+amadeus
+apscheduler
+pandas
+scikit-learn
+xgboost
+lightgbm
+prophet
+sqlalchemy
+python-dotenv
+pytest
+httpx
