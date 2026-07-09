@@ -21,7 +21,8 @@ export default function FlightForm({ onPredict, loading }) {
     if (!magicQuery) return;
     try {
       setMagicLoading(true);
-      const res = await fetch("http://127.0.0.1:5000/parse_flight_query", {
+      const API_URL = process.env.REACT_APP_API_URL || "http://127.0.0.1:5000";
+      const res = await fetch(`${API_URL}/parse_flight_query`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ query: magicQuery })
