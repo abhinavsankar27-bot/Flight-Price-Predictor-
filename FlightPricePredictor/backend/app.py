@@ -8,9 +8,11 @@ import datetime
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 from dotenv import load_dotenv
 load_dotenv()
-import google.generativeai as genai
+from google import genai
 import json
-genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
+
+# Initialize the new genai client
+genai_client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 from data_pipeline.kayak_client import KayakClient
 import pandas as pd
 from ml.feature_engineering import engineer_features
@@ -48,8 +50,10 @@ Output MUST be strict JSON in this exact format, with no markdown, no explanatio
 Make the price realistic for this route in USD currency.
 """
     try:
-        model = genai.GenerativeModel("gemini-pro")
-        response = model.generate_content(prompt)
+        response = genai_client.models.generate_content(
+            model="gemini-2.5-flash",
+            contents=prompt
+        )
         result = response.text.strip()
         if result.startswith("```json"):
             result = result[7:-3]
@@ -173,8 +177,10 @@ User Query: "{query}"
 Output ONLY valid JSON. No markdown formatting, no explanation.
 """
     try:
-        model = genai.GenerativeModel("gemini-pro")
-        response = model.generate_content(prompt)
+        response = genai_client.models.generate_content(
+            model="gemini-2.5-flash",
+            contents=prompt
+        )
         # Parse the JSON string
         result = response.text.strip()
         if result.startswith("```json"):
