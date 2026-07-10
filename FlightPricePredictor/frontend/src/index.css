@@ -38,35 +38,35 @@
 
 @layer components {
   .glass-card {
-    @apply bg-[var(--card-color)] border border-white/10 shadow-[0_8px_30px_rgb(0,0,0,0.12)] backdrop-blur-md rounded-[24px] p-6;
+    @apply bg-white/70 dark:bg-[#111827]/70 border border-white/20 dark:border-white/5 shadow-[0_8px_32px_rgba(0,0,0,0.08)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.4)] backdrop-blur-[12px] rounded-[24px] p-6 lg:p-8 transition-all duration-300;
   }
   
   .glass-card-secondary {
-    @apply bg-[var(--card-secondary)] border border-white/5 shadow-inner rounded-xl p-4;
+    @apply bg-white/50 dark:bg-[#1F2937]/50 border border-white/30 dark:border-white/5 shadow-inner backdrop-blur-[8px] rounded-xl p-5 lg:p-6 transition-all duration-300;
   }
 
   .btn-primary {
-    @apply bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:shadow-[0_0_25px_rgba(139,92,246,0.7)] hover:-translate-y-1 relative overflow-hidden;
+    @apply bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 shadow-[0_4px_14px_rgba(59,130,246,0.4)] hover:shadow-[0_6px_20px_rgba(139,92,246,0.6)] active:scale-[0.98] relative overflow-hidden;
   }
   
   .input-modern {
-    @apply w-full bg-[var(--card-secondary)] border border-gray-700/50 text-[var(--text-main)] rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 placeholder:text-gray-500;
+    @apply w-full bg-white/60 dark:bg-black/20 border border-gray-200 dark:border-gray-700/50 text-[var(--text-main)] rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 transition-all duration-200 placeholder:text-gray-400 dark:placeholder:text-gray-500 hover:bg-white/80 dark:hover:bg-black/30 backdrop-blur-[4px];
   }
   
   .badge {
-    @apply inline-flex items-center rounded-md px-2.5 py-0.5 text-xs font-semibold;
+    @apply inline-flex items-center justify-center rounded-lg px-3 py-1 text-xs font-semibold tracking-wide transition-colors;
   }
   .badge-success {
-    @apply bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400;
+    @apply bg-emerald-100/80 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-400 border border-emerald-200/50 dark:border-emerald-800/50;
   }
   .badge-warning {
-    @apply bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400;
+    @apply bg-amber-100/80 text-amber-800 dark:bg-amber-900/40 dark:text-amber-400 border border-amber-200/50 dark:border-amber-800/50;
   }
   .badge-error {
-    @apply bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400;
+    @apply bg-rose-100/80 text-rose-800 dark:bg-rose-900/40 dark:text-rose-400 border border-rose-200/50 dark:border-rose-800/50;
   }
   .badge-info {
-    @apply bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400;
+    @apply bg-indigo-100/80 text-indigo-800 dark:bg-indigo-900/40 dark:text-indigo-400 border border-indigo-200/50 dark:border-indigo-800/50;
   }
 }
 

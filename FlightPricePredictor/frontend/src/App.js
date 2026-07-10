@@ -104,15 +104,15 @@ export default function App() {
 
       {/* Hero Section */}
       <section className="relative overflow-hidden pt-16 pb-12">
-        <div className="absolute inset-0 -z-10">
-            <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-[100px] animate-pulse"></div>
-            <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '2s'}}></div>
+        <div className="absolute inset-0 -z-10 pointer-events-none">
+            <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-[120px] animate-pulse"></div>
+            <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '2s'}}></div>
         </div>
-        <div className="max-w-4xl mx-auto text-center px-4">
+        <div className="max-w-[1440px] mx-auto text-center px-4 sm:px-6 lg:px-8">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6"
+            className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 text-gray-900 dark:text-white"
           >
             Predict Flight Prices with <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-600">AI</span>
           </motion.h1>
@@ -120,31 +120,31 @@ export default function App() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-lg md:text-xl text-[var(--text-secondary)] mb-8 max-w-2xl mx-auto"
+            className="text-lg md:text-xl text-[var(--text-secondary)] mb-8 max-w-2xl mx-auto font-light"
           >
             Get intelligent flight price estimates powered by LightGBM machine learning and compare them with live market prices instantly.
           </motion.p>
         </div>
       </section>
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+      <main className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         <div className="grid lg:grid-cols-12 gap-8 items-start">
           
           {/* Left Column - Form */}
           <motion.div 
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.2 }}
-            className="lg:col-span-4"
+            initial={{ opacity: 0, x: -20, filter: 'blur(10px)' }}
+            animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+            className="lg:col-span-4 lg:sticky lg:top-24"
           >
             <FlightForm onPredict={handlePredict} loading={appState === "loading"} />
           </motion.div>
 
           {/* Right Column - Results */}
           <motion.div 
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.3 }}
+            initial={{ opacity: 0, x: 20, filter: 'blur(10px)' }}
+            animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
+            transition={{ delay: 0.3, duration: 0.5 }}
             className="lg:col-span-8 flex flex-col gap-6"
           >
             {appState === "result" && predictionData ? (
@@ -161,13 +161,16 @@ export default function App() {
                 </div>
               </>
             ) : (
-              <div className="h-full min-h-[400px] glass-card flex flex-col items-center justify-center text-center opacity-70">
-                <div className="w-24 h-24 mb-6 rounded-full bg-gradient-to-tr from-blue-500/10 to-purple-500/10 flex items-center justify-center">
-                    <Plane size={48} className="text-gray-400 dark:text-gray-600" />
+              <div className="h-full min-h-[500px] glass-card flex flex-col items-center justify-center text-center">
+                <div className="relative mb-8">
+                  <div className="absolute inset-0 bg-blue-500/20 rounded-full blur-xl animate-pulse"></div>
+                  <div className="w-32 h-32 rounded-[2rem] bg-gradient-to-tr from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 border border-gray-200 dark:border-gray-700 shadow-2xl flex items-center justify-center relative z-10 rotate-3 transition-transform hover:rotate-6 duration-500">
+                      <Plane size={56} className="text-blue-500 transform -rotate-45" />
+                  </div>
                 </div>
-                <h3 className="text-xl font-semibold mb-2">No Prediction Yet</h3>
-                <p className="text-[var(--text-secondary)] max-w-sm">
-                  Enter your flight details and click predict to generate an AI-powered price analysis.
+                <h3 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white mb-3">No Prediction Yet</h3>
+                <p className="text-[var(--text-secondary)] max-w-md text-lg font-light leading-relaxed">
+                  Enter your flight details to generate an AI-powered prediction and compare it with live market rates.
                 </p>
               </div>
             )}

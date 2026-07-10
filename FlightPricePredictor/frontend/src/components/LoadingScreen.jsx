@@ -3,11 +3,11 @@ import { motion } from "framer-motion";
 import { Plane } from "lucide-react";
 
 const steps = [
-  "Analyzing Routes...",
-  "Estimating Demand...",
-  "Running ML Model...",
-  "Comparing Market...",
-  "Almost Ready..."
+  "Analyzing route...",
+  "Running ML model...",
+  "Fetching live price...",
+  "Calibrating prediction...",
+  "Almost done..."
 ];
 
 export default function LoadingScreen() {
