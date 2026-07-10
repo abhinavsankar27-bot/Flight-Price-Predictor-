@@ -39,7 +39,7 @@ export default function App() {
     setAppState("loading");
     
     try {
-      const API_URL = process.env.REACT_APP_API_URL || "http://127.0.0.1:5000";
+      const API_URL = process.env.REACT_APP_API_URL || "https://flight-price-predictor-77yj.onrender.com";
       const res = await fetch(`${API_URL}/predict`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
