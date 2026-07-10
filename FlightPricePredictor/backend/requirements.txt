@@ -5,3 +5,4 @@ lightgbm
 google-genai
 python-dotenv
 gunicorn
+scikit-learn
