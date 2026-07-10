@@ -61,15 +61,32 @@ Make the price realistic for this route in USD currency.
             result = result[3:-3]
             
         parsed_data = json.loads(result)
-        return parsed_data["price"], parsed_data["airline"]
+        
+        # Robustly parse the price as a float in case Gemini returns a string or symbol
+        price_val = parsed_data.get("price")
+        if isinstance(price_val, str):
+            import re
+            nums = re.findall(r'\d+\.?\d*', price_val)
+            price_val = float(nums[0]) if nums else 250.0
+        else:
+            price_val = float(price_val)
+            
+        return price_val, str(parsed_data.get("airline", "Simulated Airline"))
     except Exception as e:
+        import traceback
+        print("Gemini fallback triggered:", e, traceback.format_exc())
         import random
         # Fallback to realistic ranges based on route
         if source in ["BOM", "DEL"] and destination in ["BOM", "DEL"]:
             fallback = random.randint(110, 180)
         else:
             fallback = random.randint(200, 400)
-        return fallback, "Simulated Airline (Fallback)"
+        return float(fallback), "Simulated Airline (Fallback)"
+
+@app.errorhandler(Exception)
+def handle_exception(e):
+    import traceback
+    return jsonify(error=str(e), trace=traceback.format_exc()), 500
 
 @app.route("/predict", methods=["POST"])
 def predict():
